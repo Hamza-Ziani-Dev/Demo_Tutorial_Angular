@@ -1,0 +1,17 @@
+<h1>{{title}}</h1>
+<h1 [textContent]='title'></h1>
+<!-- Method one-->
+<img src="{{image1}}" alt="" />
+<!-- Method two-->
+<!-- Property binding -->
+<img [src]="image2" />
+<img [src]="image3" />
+<img [src]="image4" />
+<img [src]="image5" />
+<img [src]="image6" />
+<!-- Events and events filtering -->
+<button
+       type="button"
+       class="btn btn-primary btn-block"
+       (click)="goToBack()">Go To Back Home
+</button>

@@ -1,0 +1,43 @@
+<div class="container">
+  <form autocomplete="off">
+    <div class="mb-3">
+      <label for="Email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        ngModel
+        name="email"
+        #email="ngModel"
+        required
+        minlength="10"
+        maxlength="25"
+      />
+      <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+        <span *ngIf="email.errors?.['required']">Email is required</span>
+        <span *ngIf="email.errors?.['minlength']">Min Length is 10 characters</span>
+        <span *ngIf="email.errors?.['maxlength']">Max Length is 25 characters</span>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="Password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="Password"
+      ngModel
+        name="password"
+        #password="ngModel"
+        required
+        minlength="8"
+        maxlength="20" />
+      <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+        <span *ngIf="password.errors?.['required']">Password is required</span>
+        <span *ngIf="password.errors?.['minlength']">Min Length is 8 characters</span>
+        <span *ngIf="password.errors?.['maxlength']">Max Length is 20 characters</span>
+      </div>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

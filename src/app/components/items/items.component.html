@@ -1,0 +1,67 @@
+<div class="container-fluid ">
+    <!-- Class Binding -->
+    <div class="row">
+        <ul class="list-group" *ngFor="let item of items">
+            <!-- Class and style binding-->
+            <!-- [class.active]='currentid === item.id'-->
+            <li class="list-group-item" [ngClass]='{"active": currentid === item.id}' [style.backgroundColor]="currentid === item.id ? 'blue' : 'gray'">{{item.name}}</li>
+        </ul>
+    </div>
+    <br><br>
+    <div class="row ">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Country</th>
+                    <th>Status</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                    <th>Details</th>
+                    <th>QR Code</th>
+                </tr>
+            </thead>
+            <!-- Pipes {uppercase , lowercase, numbers,} -->
+            <tbody *ngIf="items.length > 0">
+                <tr *ngFor="let item of items">
+                    <td> {{item.id}}</td>
+                    <td>{{item.name | uppercase}}</td>
+                    <td>{{item.age}}</td>
+                    <td>{{item.country | uppercase}}</td>
+                    <td *ngIf="item.status == 'isactive';else isnotactive"> {{item.name}} is Active</td>
+                    <ng-template #isnotactive>
+                        <td>en attende</td>
+                    </ng-template>
+                    <td> {{item.price | currency: 'USD': true : '2.2-3' }}</td>
+                    <td>{{item.date | date}}</td>
+                    <td><a href=''><i class='fa fa-user fa-lg'></i></a></td>
+                    <td>
+                        <qr-code [value]="'Data'" [size]='30'></qr-code>
+                    </td>
+                </tr>
+                <div *ngIf="items.length < 0 ">
+                    You don't have no items to display
+                </div>
+            </tbody>
+        </table>
+    </div>
+    <br><br>
+    <!-- Events and events filtering -->
+    <div class="form-control">
+        <input type='text' (keyup)="handeleKeyUp()" /><br><br>
+        <button class="btn btn-primary" (click)='clickMe()'>Click Me
+        </button><br>
+        <h2> Template variables and two way data binding </h2>
+        <br>
+        <!-- Method One-->
+        <h3>One</h3>
+        <input type='text' (keyup.enter)="handeleInputOne($event)" />
+        <br><br>
+        <!-- Method Two-->
+        <h3>Two</h3>
+        <input type='text' #info (keyup.enter)="handeleInputTwo(info.value)" />
+        <br><br>
+    </div>
+</div>

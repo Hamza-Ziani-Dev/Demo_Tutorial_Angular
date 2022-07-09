@@ -1,0 +1,80 @@
+<div class="container">
+  <h1>Hello world!</h1>
+  <h2>{{ name }} from {{ location }} and Status {{ getStatus() }}</h2>
+  <!-- Events and events filtering -->
+  <button type="button" class="btn btn-danger" (click)="getMessage()">
+    Save
+  </button>
+
+  <div class="row">
+    <div class="col-md-4 mt-4">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="text-center">Two way binding angular</h3>
+        </div>
+        <div class="card-body">
+          <!-- Event Two way binding -->
+          <input type="text" class="form-control" [(ngModel)]="message" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <h4 class="text-danger">{{ message }}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 mt-4">
+      <label>QR CODE </label>
+      <textarea
+        class="form-control"
+        [(ngModel)]="QrCodeText"
+        name="QrCodeText"
+        cols="20"
+        rows="5"
+      ></textarea>
+    </div>
+    <div class="col-md-2">
+      <qr-code [value]="QrCodeText" [size]="90"></qr-code>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="isactive">
+    <h2>Welcome {{ name }}</h2>
+  </div>
+  <div class="row m-4">
+    <button
+      type="button"
+      class="btn btn-primary btn-block"
+      (click)="goToNextPage()"
+    >
+      Go To Next Page
+    </button>
+  </div>
+  <div class="row my-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Body</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of posts">
+          <td>{{ post.id }}</td>
+          <td>{{ post.title | summary: 30 }}</td>
+          <td>{{ post.body | summary: 60 }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- <div class="row ">
+        <div [ngSwitch]="jours ">
+            <div *ngSwitchCase=" 'lun' ">Lundi</div>
+            <div *ngSwitchCase=" 'Mar' ">Mardi</div>
+            <div *ngSwitchCase=" 'Mec' ">Mecredi</div>
+            <div *ngSwitchDefault>no jours</div>
+        </div>
+    </div> -->
+</div>

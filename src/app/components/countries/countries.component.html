@@ -1,0 +1,12 @@
+<select class="countries">
+  <option value="">Select Country</option>
+    <!-- <option *ngFor="let country of countries"
+            value="{{ country.value }}">
+            {{ country.name }}
+    </option> -->
+    <option *ngFor="let country of countries"
+            [selected]="country.value == 'marrocco'"
+            [value]="country.value">
+            {{ country.name }}
+    </option>
+</select>
